@@ -1,7 +1,30 @@
 <?php
+
 date_default_timezone_set("Asia/Taipei");
 session_start();
+$tstr=[
+  'title'=>"網站標題管理",
+  'ad'=>"動態文字管理",
+  'mvim'=>"動畫圖片管理",
+  'image'=>"校園映像圖片管理",
+  'total'=>"進站人數管理",
+  'bottom'=>"頁尾版權文字管理",
+  'news'=>"最新消息管理",
+  'admin'=>"管理者管理",
+  'menu'=>"選單管理",
+];
 
+$addstr=[
+  'title'=>"新增網站標題",
+  'ad'=>"新增動態文字",
+  'mvim'=>"新增動畫圖片",
+  'image'=>"新增校園映像圖片",
+  'total'=>"新增進站人數",
+  'bottom'=>"新增頁尾版權文字",
+  'news'=>"新增最新消息",
+  'admin'=>"新增管理者",
+  'menu'=>"新增選單",
+];
 
 class DB{
   protected $table;
@@ -132,23 +155,14 @@ function to($url){
 }
 
 
-//----function執行測試----
-// $Title=new DB("title");
-// $data=[
-//   'text'=>'第一筆資料',
-//   'img'=>'t001.jpg',
-//   'sh'=>1
-// ];
-
-// $Title->save($data);
-// $row=$Title->find(1);
-// print_r($row);
-// $row['text']="修改資料測試";
-// $Title->save($row);
-// $row=$Title->find(1);
-// print_r($row);
-// $Title->del(1);
-
-
+$Title=new DB("title");
+$Ad=new DB("ad");
+$Mivm=new DB("mivm");
+$Image=new DB("image");
+$Total=new DB("total");
+$Bottom=new DB("bottom");
+$News=new DB("news");
+$Admin=new DB("admin");
+$Menu=new DB("menu");
 
 ?>
