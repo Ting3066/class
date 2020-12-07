@@ -26,6 +26,12 @@ $addstr=[
   'menu'=>"新增選單",
 ];
 
+$uploadimg=[
+  'title'=>['更新網站標題圖片','網站標題圖片'],
+  'mvim'=>['更換動畫圖片','動畫圖片'],
+  'image'=>['更新校園映像圖片','校園映像圖片']
+];
+
 class DB{
   protected $table;
   protected $dsn="mysql:host=localhost;dbname=db01;charset=utf8";

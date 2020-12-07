@@ -4,21 +4,19 @@
     <table width="100%">
       <tbody>
         <tr class="yel">
-          <td width="45%">網站標題</td>
-          <td width="23%">替代文字</td>
-          <td width="7%">顯示</td>
-          <td width="7%">刪除</td>
+          <td width="70%">校園映像圖片</td>
+          <td width="10%">顯示</td>
+          <td width="10%">刪除</td>
           <td></td>
         </tr>
         <?php
-        $row=$Title->all();
+        $row=$Image->all();
         foreach($row as $row){
         ?>
         <tr>
-          <td width="45%"><img src="./img/<?=$row['img'];?>" style="width:300px;height:30px"></td>
-          <td width="23%"><input type="text" name="text[]" value="<?=$row['text'];?>"></td>
-          <td width="7%"><input type="radio" name="sh" value="<?=$row['id'];?>" <?=($row['sh']==1)?'checked':'';?>></td>
-          <td width="7%"><input type="checkbox" name="del[]" value="<?=$row['id'];?>"></td>
+          <td width="70%"><img src="./img/<?=$row['img'];?>" style="width:100px;height:68px"></td>
+          <td width="10%"><input type="checkbox" name="sh[]" value="<?=$row['id'];?>" <?=($row['sh']==1)?'checked':'';?>></td>
+          <td width="10%"><input type="checkbox" name="del[]" value="<?=$row['id'];?>"></td>
           <td><input type="button" value="更新圖片" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;./modal/upload.php?table=<?=$do;?>&id=<?=$row['id'];?>&#39;)"></td>
           <input type="hidden" name="id[]" value="<?=$row['id'];?>">
         </tr>
