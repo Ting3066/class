@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    //當網頁載入完畢時觸發匿名函式
+    // window.onload = function () {  
+    //   writeIt();
+    // }
+
+
+    //document.write對文件進行寫入，可加入html標籤，如同php的echo 
+    //若document.close 文件關閉，再對文件進行寫入時，文件會清除重新寫入
+    // document.write("<h2>我的第一個JS網頁</h2>");  
+  </script>
+
+  <!-- <script> -->
+  <!-- 呼叫函式，若script標籤分為多個段落且無window.onload指令時，則需照執行順序排列 -->
+  <!-- writeIt(); -->
+  <!-- </script> -->
+</head>
+
+<body>
+
+  <h1>hello world</h1>
+
+</body>
+
+
+
+
+<!-- 載入外部連結，視程式執行順序決定擺放位置 -->
+<script src="test.js"></script>  
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event 事件</title>
+  <script>
+    function fn(e){
+      console.log(e);
+    }
+
+    // let demo=null;
+    function whatIt(e){
+      // demo=e;
+      console.log(e.value);
+
+
+      //點擊會放大，再點擊一次會恢復原狀
+      if(e.style.fontSize){
+        e.style.fontSize=null;
+      }else{
+        // e.style="color:red;font-size:2rem";
+        e.style.color="red";
+        e.style.fontSize="2rem";
+      }
+      
+    }
+  </script>
+</head>
+<body>
+  <!-- event 可以有多個 -->
+  <!--點擊事件-->
+  <input type="button" value="onclick1" onclick="fn('這是click效果')">  <!--點擊後滑鼠放開生效-->
+  <input type="button" value="onclick2" onclick="whatIt(this)">  <!--此this代表整個input-->
+  <hr>
+  <input type="button" value="onmousedown" onmousedown="whatIt(this)">  <!--點下就開始生效-->
+  <input type="button" value="onmouseup" onmouseup="whatIt(this)">  <!--點擊後滑鼠放開生效-->
+  <input type="button" value="onmouseover" onmouseover="whatIt(this)">  <!--滑鼠鼠標移動到上面時生效-->
+  <input type="button" value="onmouseout" onmouseout="whatIt(this)">  <!--滑鼠鼠標離開生效-->
+  <input type="text" value="onchange" onchange="whatIt(this)">  <!--內容改變後生效-->
+  <input type="text" value="onfocus" onfocus="whatIt(this)">  <!--成為焦點時生效-->
+  <input type="text" value="onblur" onblur="whatIt(this)">  <!--與focus相反-->
+<hr>
+
+  <div id="fakebtn"></div>
+  <button id="keycode">press keyboard</button>
+
+  <script>
+    document.getElementById("fakebtn");
+    fakebtn.innerHTML = "假按鈕";
+    fakebtn.style="background: aquamarine;box-shadow:black -1px 2px 3px 2px;cursor: pointer;display: inline;padding: 5px;"
+    fakebtn.onclick=function(){
+      console.log(this.style.backgroundColor);   //匿名函式才支援this代表目前的空間，若是箭頭函式的this則是指window
+    }
+
+    /*event 事件 on keyboard*/
+    let keyword=new Array();
+    keyword[87]="W";
+    keyword[83]="S";
+    keyword[65]="A";
+    keyword[68]="D";
+
+    document.onkeydown=()=>{
+      console.log(event.code);
+      document.getElementById("keycode").innerHTML=keyword[event.which];
+    };
+  </script>
+</body>
+</html>

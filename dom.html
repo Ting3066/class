@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1 class="demo1">hello world</h1>  <!--node 節點-->
+  <h1 id="demo2">hello world</h1>  <!--node 節點-->
+  <div id="menuBox">
+    <ul id="total">
+      <li class="list">001</li>
+      <li class="list">002</li>
+      <li class="list">003</li>
+      <li class="list">004</li>
+      <li class="list">005</li>
+    </ul>
+  </div>
+  <a href="https://www.google.com" title="atitle" name="aname" id="aid">Google</a>
+  <input type="button" value="送出">
+  <input type="button" value="傳送">
+  <script>
+    //getElementById 以id來找
+    const de1 = document.getElementById("demo2").innerText;  //innerText 取得文字，也可用於對文字進行修改
+    const de2 = document.getElementById("demo2").textContent;  //取得文字，較建議使用此方式
+    const mnu = document.getElementById("menuBox").innerHTML;   //取的html原始碼
+    const demoA = document.getElementById("aid").title; //取得id為aid的標籤內的title
+
+
+    const tt = document.getElementById("total");
+    // tt.innerHTML=`<li>AAA</li><li>BBB</li><li>CCC</li>`;  //html也可以被修改
+
+
+    //getElementByClassName 以class來找
+    const multAry1 = document.getElementsByClassName("list"); //回傳陣列，即便內容只有一個
+
+    //getElementByTagName 以標籤來找
+    const multAry2 = document.getElementsByTagName("li");
+    const btn = document.getElementsByTagName("input")[0].value;  //找到第一個input標籤的value
+
+    // document.querySelectorAll(.class or #id or tag) //可以選擇id, class, tag,綜合以上功能
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //轉址
+    // location.href=""; 
+
+    //開啟一個新視窗
+    // window.open(); 
+    //可以將window.open存成一個變數，就可以使用 變數.close()來關閉視窗
+    //ex: 
+    //let new=window.open("https://www.google.com");  --> 開啟新視窗
+    //new.close();  --> 關閉視窗
+
+    // console.log("1")
+    // console.log("2")
+    // alert("提示視窗");  //alert會導致程式暫停進行
+    // alert視窗關閉後才開始出現
+    // console.log("3")
+    // console.log("4")
+
+    // const ans=confirm("question"); //--> 確定/取消，回傳一個布林值，按下確認為true，按下取消為false
+    // alert("你選擇了"+ans);
+
+    // const msg=prompt("question");  //輸入訊息，回傳字串
+    // if(msg){  //NULL視為false
+    //   alert("你輸入了"+msg);
+    // }else{
+    //   alert("你沒有輸入任何文字");
+    // }
+
+    // let delay=function delay(){
+    //   console.log("BOOM!!!");
+    // }
+    // setTimeout(delay, 5000);  //第一個參數為變數或函式名稱
+    // clearTimeout(變數)可以清掉setTimeout()
+
+    // setTimeout(()=>{
+    //   console.log("BOOM!!!")
+    // },5000);
+
+
+    let i=1;
+    let s3=setInterval(()=>{  //setInterval()每隔一段時間執行，包含第一次，除非有其他判斷
+      console.log(i);
+      if(i==5){
+        clearInterval(s3);  //停止setInterval執行
+      }
+      i++;
+    },1000);
+    // clearInterval(s3);  //停止setInterval執行
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>監聽</title>
+</head>
+<body>
+  <button id="ock">Try Me</button>
+  <button onclick="mybtn.removeEventListener('mouseover',fn1);">clear mouseover v1</button>  <!--將移除監聽寫成另外一個按鈕-->
+
+
+  <script>
+    let mybtn = document.getElementById("ock");
+
+    mybtn.addEventListener("click",function(){
+      console.log("is click");
+    });
+
+    mybtn.addEventListener("mouseover",fn1);
+    mybtn.addEventListener("mouseover",fn2);
+
+
+    function fn1(){
+      console.log("is mouseover v1");
+    }
+    function fn2(){
+      console.log("is mouseoverv2");
+    }
+
+    // mybtn.removeEventListener("mouseover",fn1); //移除監聽
+  </script>
+</body>
+</html>
