@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .shape{
+      width: 100px;
+      height: 100px;
+      border: 1px solid black;
+      margin: 20px;
+      /* background: red; */
+    }
+  </style>
+</head>
+<body>
+  <div id="shape" class="shape"></div>
+  <button id="sq">正方形</button>
+  <button id="cir">圓形</button>
+  <button id="tri">三角形</button>
+
+
+  <script>
+    const change = document.getElementById("shape");
+    // const shape1 = document.getElementById("sq");
+    // const shape2 = document.getElementById("cir");
+    // const shape3 = document.getElementById("tri");
+
+    function changesq(){
+      change.style="width:100px;height:100px;border:1px solid red;margin:20px;background:red";
+
+    }
+    function changecir(){
+      change.style="width:100px;height:100px;border-radius:50%;border:1px solid red;margin:20px;background:red";
+
+    }
+    function changetri(){
+      change.style="width:0;height:0;border-right:50px solid transparent;border-left:50px solid transparent;border-bottom:100px solid red;";
+
+    }
+
+
+
+    document.getElementById("sq").onclick=changesq;
+    document.getElementById("cir").onclick=changecir;
+    document.getElementById("tri").onclick=changetri;
+  </script>
+</body>
+</html>
