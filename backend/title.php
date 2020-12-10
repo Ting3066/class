@@ -11,8 +11,8 @@
           <td></td>
         </tr>
         <?php
-        $row=$Title->all();
-        foreach($row as $row){
+        $rows=$Title->all();
+        foreach($rows as $row){
         ?>
         <tr>
           <td width="45%"><img src="./img/<?=$row['img'];?>" style="width:300px;height:30px"></td>

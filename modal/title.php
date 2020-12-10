@@ -1,3 +1,5 @@
+<!-- 彈出視窗 -->
+
 <h3>新增網站標題圖片</h3>
 <hr>
 <form action="./api/add.php" method="post" enctype="multipart/form-data">

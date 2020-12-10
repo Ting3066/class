@@ -84,6 +84,7 @@
 					</tbody>
 				</table>
 				<?php 
+				
 				$do=(isset($_GET['do']))?$_GET['do']:'title';
 				$file="./backend/".$do.".php";
 				if(file_exists($file)){
