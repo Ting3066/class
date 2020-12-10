@@ -21,8 +21,8 @@
 		</div>
 	</div>
 	<div id="main">
-		<a title="" href="?">
-			<div class="ti" style="background:url(&#39;use/&#39;); background-size:cover;"></div>
+		<a title="<?=$Title->find(['sh'=>1])['text'];?>" href="index.php">
+			<div class="ti" style="background:url(&#39;img/<?=$Title->find(['sh'=>1])['img'];?>&#39;); background-size:cover;"></div>
 			<!--標題-->
 		</a>
 		<div id="ms">
@@ -84,7 +84,7 @@
 					</tbody>
 				</table>
 				<?php 
-				
+
 				$do=(isset($_GET['do']))?$_GET['do']:'title';
 				$file="./backend/".$do.".php";
 				if(file_exists($file)){
