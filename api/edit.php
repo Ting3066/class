@@ -20,6 +20,7 @@ foreach($_POST['id'] as $key => $id){
       case 'ad':     //遇到break才會中斷程式，避免重複的程式碼
       case 'mvim':
       case 'image':
+      case 'news':
         $row['sh']=(in_array($id,$_POST['sh']))?1:0;
       break;
       case 'total':
