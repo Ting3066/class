@@ -17,14 +17,20 @@ foreach($_POST['id'] as $key => $id){
       case 'title':
         $row['sh']=($id==$_POST['sh'])?1:0;
       break;
-      case 'ad':   
+      case 'ad':     //遇到break才會中斷程式，避免重複的程式碼
       case 'mvim':
       case 'image':
         $row['sh']=(in_array($id,$_POST['sh']))?1:0;
       break;
+      case 'total':
+        $row['total']=$_POST['total'];
+      break;
     }
 
-    $row['text']=$_POST['text'][$key];
+    if(!empty($_POST['text'])){
+
+      $row['text']=$_POST['text'][$key];
+    }
     $db->save($row);
   }
 }

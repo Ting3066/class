@@ -4,7 +4,7 @@
     <table width="100%">
       <tbody>
         <tr class="yel">
-          <td width="70%">替代文字</td>
+          <td width="70%">動態文字廣告</td>
           <td width="10%">顯示</td>
           <td width="10%">刪除</td>
         </tr>

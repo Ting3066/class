@@ -4,7 +4,7 @@
     <table width="100%">
       <tbody>
         <tr class="yel">
-          <td width="70%">網站標題</td>
+          <td width="70%">校園映像資料圖片</td>
           <td width="10%">顯示</td>
           <td width="10%">刪除</td>
           <td></td>
@@ -17,7 +17,7 @@
           <td class="cent"><img src="./img/<?=$row['img'];?>" style="width:100px;height:68px"></td>
           <td><input type="checkbox" name="sh[]" value="<?=$row['id'];?>" <?=($row['sh']==1)?'checked':'';?>></td>
           <td><input type="checkbox" name="del[]" value="<?=$row['id'];?>"></td>
-          <td><input type="button" value="更新圖片" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;./modal/upload.php?table=<?=$do;?>&id=<?=$row['id'];?>&#39;)"></td>
+          <td><input type="button" value="更換圖片" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;./modal/upload.php?table=<?=$do;?>&id=<?=$row['id'];?>&#39;)"></td>
           <input type="hidden" name="id[]" value="<?=$row['id'];?>">  <!--隱藏欄位，傳值用-->
         </tr>
         <?php
