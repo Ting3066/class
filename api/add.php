@@ -16,12 +16,18 @@ if(!empty($_POST['text'])){
 
 }
 
-if($table!='title'){
-  
-  $data['sh']=1;
-}else{
-  $data['sh']=0;
-
+switch($table){
+  case 'title':
+    $data['sh']=0;
+  break;
+  case 'admin':
+    $data['acc']=$_POST['acc'];
+    $data['pw']=$_POST['pw'];
+  break;
+  case 'menu':
+  break;
+  default:
+    $data['sh']=1;
 }
 
 
