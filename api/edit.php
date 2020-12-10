@@ -29,6 +29,10 @@ foreach($_POST['id'] as $key => $id){
       case 'bottom':
         $row['bottom']=$_POST['bottom'];
       break;
+      case 'admin':
+        $row['acc']=$_POST['acc'][$key];
+        $row['pw']=$_POST['pw'][$key];
+      break;
     }
 
     if(!empty($_POST['text'])){
