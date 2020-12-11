@@ -8,16 +8,19 @@
     </div>
   </div>
   <script>
-    <?php
-    $str=[];
-      $mvims=$Mvim->all(['sh'=>1]);
-      foreach($mvims as $key => $mvim){
-        $str[]="'img/".$mvim['img']."'";
-        
-      }
-    ?>
-    var lin = [<?=implode(',',$str);?>];
+    var lin = [<?=implode(',',$str);?>];  //作法一
+    // var lin = new Array();  作法二
     var now = 0;
+    <?php
+    
+    $str=[];
+    $mvims=$Mvim->all(['sh'=>1]);
+    foreach($mvims as $key => $mvim){
+      $str[]="'img/".$mvim['img']."'";  //作法一
+      //echo "lin.push('img/{$mvim['img']}');";  作法二，利用script的原生程式
+      
+    }
+    ?>;  //script內使用php要加上;
     ww();
     if (lin.length > 1) {
       setInterval("ww()", 3000);  //每隔3秒執行ww() function
