@@ -14,7 +14,5 @@ echo $str;
 //   echo $ad['text']."&nbsp;&nbsp;&nbsp;";
 
 // }
-
 ?>
-
 </marquee>

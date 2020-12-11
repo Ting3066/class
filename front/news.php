@@ -21,16 +21,37 @@
 	?>
 	</ol>
 	<div style="text-align:center;">
-		<a class="bl" style="font-size:30px;" href="?do=news&p=0">&lt;&nbsp;</a>
+	<?php
+		if(($now-1)>0){
+
+	?>
+		<a class="bl" style="font-size:30px;" href="?do=news&p=<?=$now-1;?>">&lt;&nbsp;</a>
+	<?php
+		}
+	?>
+	
 		<?php
 			for($i=1;$i<=$pages;$i++){
-				echo "<a href='?do=news&p=$i'>";
+				if($i==$now){
+					$font="36px";
+				}else{
+					$font="30px";
+				}
+				echo "<a href='?do=news&p=$i' style='font-size:$font;text-decoration:none'>";
 				echo $i;
 				echo "</a>";
 			}
 
 		?>
-		<a class="bl" style="font-size:30px;" href="?do=news&p=0">&nbsp;&gt;</a>
+
+	<?php
+		if(($now+1)<=$pages){
+
+	?>
+		<a class="bl" style="font-size:30px;" href="?do=news&p=<?=$now+1;?>">&nbsp;&gt;</a>
+	<?php
+		}
+	?>
 	</div>
 </div>
 <div id="alt" style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
