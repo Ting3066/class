@@ -2,11 +2,25 @@
   <?php include "marquee.php";?>
   <div style="height:32px; display:block;"></div>
   <!--正中央-->
+  <div style="width:100%; padding:2px; height:290px;">
+    <div id="mwww" loop="true" style="width:100%; height:100%;">
+      <div style="width:99%; height:100%; position:relative;" class="cent">沒有資料</div>
+    </div>
+  </div>
   <script>
-    var lin = new Array();
+    <?php
+    $str=[];
+      $mvims=$Mvim->all(['sh'=>1]);
+      foreach($mvims as $key => $mvim){
+        $str[]="'img/".$mvim['img']."'";
+        
+      }
+    ?>
+    var lin = [<?=implode(',',$str);?>];
     var now = 0;
+    ww();
     if (lin.length > 1) {
-      setInterval("ww()", 3000);
+      setInterval("ww()", 3000);  //每隔3秒執行ww() function
       now = 1;
     }
 
@@ -18,11 +32,6 @@
         now = 0;
     }
   </script>
-  <div style="width:100%; padding:2px; height:290px;">
-    <div id="mwww" loop="true" style="width:100%; height:100%;">
-      <div style="width:99%; height:100%; position:relative;" class="cent">沒有資料</div>
-    </div>
-  </div>
   <div style="width:95%; padding:2px; height:190px; margin-top:10px; padding:5px 10px 5px 10px; border:#0C3 dashed 3px; position:relative;">
     <span class="t botli">最新消息區
     </span>
