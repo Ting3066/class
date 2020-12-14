@@ -12,7 +12,7 @@
           <td></td>
         </tr>
         <?php
-        $rows=$Menu->all();
+        $rows=$Menu->all(['parent'=>0]);
         foreach($rows as $row){
         ?>
         <tr>

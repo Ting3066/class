@@ -4,6 +4,12 @@ include_once "../base.php";
 $acc=$_POST['acc'];
 $pw=$_POST['pw'];
 
+// if($acc=='admin' && $pw=='1234'){
+//   $check=1;
+// }else{
+//   $check=$Admin->count(['acc'=>$acc,"pw"=>$pw]);
+// }
+
 $check=$Admin->count(['acc'=>$acc,"pw"=>$pw]);
 
 if($check>0){

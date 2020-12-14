@@ -11,6 +11,7 @@
         <?php
         $rows=$Admin->all();
         foreach($rows as $row){
+          if($orw['acc']!='admin'){  //如果帳號是admin就不顯示，確保不會被更改
         ?>
         <tr>
           <td><input type="text" name="acc[]" value="<?=$row['acc'];?>" style="width:95%"></td>
@@ -19,6 +20,7 @@
           <input type="hidden" name="id[]" value="<?=$row['id'];?>">  <!--隱藏欄位，傳值用-->
         </tr>
         <?php
+          }
         }
         ?>
       </tbody>
