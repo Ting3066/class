@@ -32,6 +32,8 @@ $uploadimg=[
   'image'=>['更新校園映像圖片','校園映像圖片']
 ];
 
+
+
 class DB{
   protected $table;
   protected $dsn="mysql:host=localhost;dbname=db01;charset=utf8";
@@ -172,4 +174,11 @@ $News=new DB("news");
 $Admin=new DB("admin");
 $Menu=new DB("menu");
 
+
+if(empty($_SESSION['total'])){  //重整頁面不會增加近站總人數，關掉瀏覽器再打開才會增加
+  $total=$Total->find(1);
+  $total['total']++;
+  $Total->save($total);
+  $_SESSION['total']=1;
+}
 ?>
