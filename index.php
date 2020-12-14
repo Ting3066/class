@@ -39,8 +39,9 @@
 					?>
           <div class="mainmu">
             <a style="color:#000; font-size:13px; text-decoration:none;"
-              href="<?=$main['href'];?>"><?=$main['text'];?></a>
-            <div class="mw">
+              href="<?=$main['href'];?>"><?=$main['text'];?>
+						</a>
+            <div class="mw" style="display:none">
 							<?php
 								if($Menu->count(['parent'=>$main['id']])>0){  //若parent>0表示為次選單
 									$subs=$Menu->all(['parent'=>$main['id']]);
