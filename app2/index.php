@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php include_once "base.php";?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +10,40 @@
     <link rel="stylesheet" href="style.css">
     <!---匯入要使用的函式庫--->
 
-
 </head>
 <body>
   <h1 class="header">學生資料管理系統</h1>
-
+  <h5>新增學生</h5>
+  <form action="api/insert.php" method="post">
+    <div>姓名<input type="text" name="name"></div>
+    <div>班級<input type="text" name="classes"></div>
+    <div>座號<input type="text" name="num"></div>
+    <div>成績<input type="text" name="score"></div>
+    <input type="submit" value="新增">
+  </form>
+  <table>
+    <tr>
+      <td>id</td>
+      <td>name</td>
+      <td>classes</td>
+      <td>num</td>
+      <td>score</td>
+    </tr>
+    <?php
+      $rows=$stu->all();
+      foreach($rows as $row){
+    ?>
+    <tr>
+      <td><?=$row['id'];?></td>
+      <td><?=$row['name'];?></td>
+      <td><?=$row['classes'];?></td>
+      <td><?=$row['num'];?></td>
+      <td><?=$row['score'];?></td>
+    </tr>
+    <?php
+      }
+    ?>
+  </table>
   
 </body>
 </html>
