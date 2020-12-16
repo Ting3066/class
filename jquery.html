@@ -1,43 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>jQuery</title>
-    <link rel="shortcut icon" href="#" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-      <!-------引入jQuery函式庫------->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>jQuery</title>
+  <link rel="shortcut icon" href="#" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <style>
+    li {
+      padding: 5px;
+      box-shadow: 0 0 5px #ccc;
+      margin: 5px 0;
+      font-size: 16px;
+      background: lightblue;
+    }
+
+    li:nth-child(odd) {
+      color: pink;
+      background: #eee;
+    }
+  </style>
+
+  <!-------引入jQuery函式庫------->
 </head>
+
 <body>
-    <h1 class="header">jQuery</h1>
-    <div class="title"></div>
-    <h4></h4>
-    <ul></ul>
-    
+  <h1 class="header">jQuery</h1>
+  <div class="title"></div>
+  <h4></h4>
+  <ul></ul>
+
 </body>
+
 </html>
 <script>
-    /********************************************************
-    * 1.api網址  https://kktix.com/events.json
-    * 2.選擇$.ajax()、$.get()、$.post()其中一種方式
-    * 3.建立回呼函式(call back function)來處理回應時的各項行為
-    * 4.建立錯誤處理
-    ********************************************************/
-     
-    //利用$.ajax()方法傳送請求並取得回應
-    /* $.ajax(
-      {
-        url:'',
-        type:'',
-        success:,
-        error:,
-        complete:
-      }
-    ) */   
+  /********************************************************
+  * 1.api網址  https://kktix.com/events.json
+  * 2.選擇$.ajax()、$.get()、$.post()其中一種方式
+  * 3.建立回呼函式(call back function)來處理回應時的各項行為
+  * 4.建立錯誤處理
+  ********************************************************/
 
-    
-    //利用$.get()方法傳送請求並取得回應
+  //利用$.ajax()方法傳送請求並取得回應
+  // $.ajax(
+  //   {
+  //     url: 'https://kktix.com/events.json',
+  //     type: 'get',
+  //     success: function (res) {
+  //       document.getElementsByTagName('h4')[0].innerHTML=res.title;
+
+  //       let events = res.entry;
+  //       let html = "";
+  //       for (let i = 0; i < events.length; i++) {
+  //         html = html + `<li><a href="${events[i].url}">${events[i].title}</a></li>`;
+
+  //       }
+  //       let ul = document.getElementsByTagName('ul')[0];
+  //       ul.innerHTML = html;
+
+  //     },
+  //     error:,
+  //     complete:
+  //   }
+  // )
 
 
-  </script>
+  //利用$.get()方法傳送請求並取得回應
+
+  $.get("https://kktix.com/events.json", function (res) {
+    document.getElementsByTagName('h4')[0].innerHTML = res.title;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+
+    let events = res.entry;
+    let html = "";
+    for (let i = 0; i < events.length; i++) {
+      html = html + `<li><a href="${events[i].url}">${events[i].title}</a></li>`;
+
+    }
+    let ul = document.getElementsByTagName('ul')[0];
+    ul.innerHTML = html;
+  })
+
+
+// $.ajax(
+//   {
+//     type: "GET",
+//     url: "https://www.cpc.com.tw//GetOilPriceJson.aspx?type=TodayOilPriceString",
+//     success: function (data) {
+//       console.log(data);
+//     }
+//   });
+
+
+</script>
