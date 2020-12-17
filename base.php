@@ -4,6 +4,10 @@ date_default_timezone_set("Asia/Taipei");
 session_start();
 
 $Total=new DB('total');
+$Mem=new DB("mem");
+
+
+
 
 $chk=$Total->find(['date'=>date("Y-m-d")]);
 

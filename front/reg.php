@@ -19,7 +19,40 @@
       <td><input type="text" name="email" id="email"></td>
     </tr>
     <tr>
-      <td><input type="submit" value="註冊"><input type="reset" value="清除"></td>
+      <td><input type="button" value="註冊" onclick="reg()"><input type="reset" value="清除"></td>
+      <td></td>
     </tr>
   </table>
 </fieldset>
+<script>
+function reg(){
+  let acc=$("#acc").val();
+  let pw=$("#pw").val();
+  let pw2=$("#pw2").val();
+  let email=$("#email").val();
+
+  if(acc=="" || pw=="" || pw2=="" || email==""){
+    alert("不可空白");
+  }else if(pw!=pw2){
+    alert("密碼錯誤");
+
+  }else{
+    $.post('api/chkacc.php',{acc},function(res){
+      if(res=='1'){
+        alert("帳號重複");
+      }else{
+        $.post("api/reg.php",{acc,pw,email},function(){
+          alert("註冊完成，歡迎加入");
+
+        })
+      }
+    })
+  }
+
+
+}
+
+
+
+
+</script>
