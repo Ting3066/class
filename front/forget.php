@@ -15,3 +15,12 @@
     </tr>
   </table>
 </fieldset>
+
+<script>
+function findPw(){
+  let email=$("#email").val();
+  $.post("api/forget.php",{email},function(res){
+    $("#result").html(res);
+  })
+}
+</script>
