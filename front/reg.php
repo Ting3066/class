@@ -1,4 +1,4 @@
-<form action="">
+<form>
   <fieldset>
     <legend>會員註冊</legend>
     <div style="color:red">請設定您要註冊的帳號及密碼(最長12個字元)</div>
