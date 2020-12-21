@@ -1,5 +1,5 @@
 <fieldset>
-  <legend>目前位置：首頁 > 最新文章區</legend>
+  <legend>目前位置：首頁 > 人氣文章區</legend>
   <table>
     <tr>
       <td width="20%">標題</td>
@@ -14,17 +14,21 @@
       $start=($now-1)*$div;
 
     
-      $all=$News->all(['sh'=>1]," limit $start,$div");
+      $all=$News->all(['sh'=>1]," order by good desc limit $start,$div");  //加上由大至小排序的條件
       foreach($all as $news){
 
     ?>
     <tr>
       <td class="header" id="t<?=$news['id'];?>" style="cursor:pointer;color:blue;text-decoration:underline"><?=$news['title'];?></span></td>
-      <td>
+      <td style="position:relative">
         <span class="title"><?=mb_substr($news['text'],0,30,'utf8');?>...</span>
-        <span class="text" style="display:none"><?=nl2br($news['text']);?></span>
+        <span class="text" style="background:rgba(51,51,51,0.8); color:#FFF; min-height:100px; width:300px; position:absolute; display:none; z-index:9999; overflow:auto;">
+          <h3><?=$typeStr[$news['type']];?></h3>
+          <?=nl2br($news['text']);?>
+        </span>
       </td>
       <td>
+        <span id="vie<?=$news['id'];?>"><?=$news['good'];?></span>個人說<img src="icon/02B03.jpg" style="width:20px;height:20px">
       <?php
         if(!empty($_SESSION['login'])){
           $chk=$Log->count(['acc'=>$_SESSION['login'],'news'=>$news['id']]);
@@ -36,7 +40,7 @@
       <?php
           }else{  //沒有按讚紀錄，畫面顯示讚
       ?>
-        <a href="#" id="news<?=$news['id'];?>" onclick="good('<?=$news['id'];?>','<?=$_SESSION['login'];?>','1')">讚</a> <!--若type=1，新稱log紀錄-->
+        <a href="#" id="news<?=$news['id'];?>" onclick="good('<?=$news['id'];?>','<?=$_SESSION['login'];?>','1')">讚</a> <!--若type=1，新增log紀錄-->
 
       <?php
           }
@@ -51,14 +55,14 @@
   <div class="ct">
       <?php
       if(($now-1)>0){
-        echo "<a href='index.php?do=news&p=".($now-1)."'> &lt; </a>";
+        echo "<a href='index.php?do=pop&p=".($now-1)."'> &lt; </a>";
       }
       for($i=1;$i<=$pages;$i++){
         $fontsize=($i==$now)?"28px":"18px";
-        echo "<a href='index.php?do=news&p=$i' style='font-size:$fontsize'> $i </a>";
+        echo "<a href='index.php?do=pop&p=$i' style='font-size:$fontsize'> $i </a>";
       }
       if(($now+1)<=$pages){
-      echo "<a href='index.php?do=news&p=".($now+1)."'> &gt; </a>";
+      echo "<a href='index.php?do=pop&p=".($now+1)."'> &gt; </a>";
       }
       ?>
   </div>
@@ -66,8 +70,7 @@
 </fieldset>
 
 <script>
-$(".header").on("click",function(){
-  $(this).next().children('.title').toggle();  //toggle 點擊後讓原本為顯示的區塊變為隱藏，原為隱藏的區塊變為顯示
+$(".header").hover(function(){
   $(this).next().children('.text').toggle();
 })
 </script>
