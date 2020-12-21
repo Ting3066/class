@@ -24,7 +24,25 @@
         <span class="title"><?=mb_substr($news['text'],0,30,'utf8');?>...</span>
         <span class="text" style="display:none"><?=nl2br($news['text']);?></span>
       </td>
-      <td></td>
+      <td>
+      <?php
+        if(!empty($_SESSION['login'])){
+          $chk=$Log->count(['acc'=>$_SESSION['login'],'news'=>$news['id']]);
+          if($chk){  //有按讚過的紀錄，畫面要顯示收回讚
+
+            ?>
+
+        <a href="#" id="news<?=$news['id'];?>" onclick="good('<?=$news['id'];?>','<?=$_SESSION['login'];?>','2')">收回讚</a>  <!--若type=2，執行刪除log紀錄的動作-->
+      <?php
+          }else{  //沒有按讚紀錄，畫面顯示讚
+      ?>
+        <a href="#" id="news<?=$news['id'];?>" onclick="good('<?=$news['id'];?>','<?=$_SESSION['login'];?>','1')">讚</a> <!--若type=1，新稱log紀錄-->
+
+      <?php
+          }
+        }
+      ?>
+      </td>
     </tr>
     <?php
       }
@@ -44,7 +62,6 @@
       }
       ?>
   </div>
-  <div class="ct"><input type="submit" value="確定修改"></div>
 
 </fieldset>
 

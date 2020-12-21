@@ -3,19 +3,19 @@ function lo(th,url)
 {
 	$.ajax(url,{cache:false,success: function(x){$(th).html(x)}})
 }
-function good(id,type,user)
+function good(news,acc,type)
 {
-	$.post("back.php?do=good&type="+type,{"id":id,"user":user},function()
+	$.post("api/good.php",{news,acc,type},function()
 	{
 		if(type=="1")
 		{
-			$("#vie"+id).text($("#vie"+id).text()*1+1)
-			$("#good"+id).text("收回讚").attr("onclick","good('"+id+"','2','"+user+"')")
+			$("#vie"+news).text($("#vie"+news).text()*1+1)
+			$("#news"+news).text("收回讚").attr("onclick","good('"+news+"','"+acc+"','2')")
 		}
 		else
 		{
-			$("#vie"+id).text($("#vie"+id).text()*1-1)
-			$("#good"+id).text("讚").attr("onclick","good('"+id+"','1','"+user+"')")
+			$("#vie"+news).text($("#vie"+news).text()*1-1)
+			$("#news"+news).text("讚").attr("onclick","good('"+news+"','"+acc+"','1')")
 		}
 	})
 }

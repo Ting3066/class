@@ -6,6 +6,7 @@ session_start();
 $Total=new DB('total');
 $Mem=new DB("mem");
 $News=new DB("news");
+$Log=new DB("log");
 
 
 
@@ -58,7 +59,7 @@ class DB{
         }
 
         $sql .= " where ".implode(" && ",$tmp);
-      }else{
+      }else{  //若不是陣列則視為字串
         $sql .= $arg[0];
       }
     }
