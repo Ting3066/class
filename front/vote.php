@@ -5,11 +5,9 @@
 ?>
 <fieldset>
   <legend>目前位置：首頁 > 問卷調查 > <?= $subject['text'];?></legend>
+  <h3><?= $subject['text'];?></h3>
     <form action="api/vote.php" method="post">
       <table>
-        <tr>
-          <td><?=$subject['text'];?></td>
-        </tr>
         <?php
           foreach($options as $option){
 
