@@ -32,11 +32,11 @@
 
             ?>
 
-        <a href="#" id="news<?=$news['id'];?>" onclick="good('<?=$news['id'];?>','<?=$_SESSION['login'];?>','2')">收回讚</a>  <!--若type=2，執行刪除log紀錄的動作-->
+        <a href="#" class="gg" id="news<?=$news['id'];?>">收回讚</a>  <!--若type=2，執行刪除log紀錄的動作-->
       <?php
           }else{  //沒有按讚紀錄，畫面顯示讚
       ?>
-        <a href="#" id="news<?=$news['id'];?>" onclick="good('<?=$news['id'];?>','<?=$_SESSION['login'];?>','1')">讚</a> <!--若type=1，新稱log紀錄-->
+        <a href="#" class="gg" id="news<?=$news['id'];?>">讚</a> <!--若type=1，新稱log紀錄-->
 
       <?php
           }
@@ -70,4 +70,16 @@ $(".header").on("click",function(){
   $(this).next().children('.title').toggle();  //toggle 點擊後讓原本為顯示的區塊變為隱藏，原為隱藏的區塊變為顯示
   $(this).next().children('.text').toggle();
 })
+
+$(".gg").on("click",function(){
+  let id=$(this).attr("id").replace("news","");
+  let text=$(this).text();
+  if(text=='讚'){
+    $(this).text('收回讚');
+  }else{
+    $(this).text('讚');
+  }
+  $.post("api/good.php",{id});
+})
+
 </script>
