@@ -37,7 +37,16 @@ function nav(type){
 
 function getTitle(type){
   $.get("api/get_title.php",{type},function(titles){
-    $(".titles").html(titles)
+    let tt=JSON.parse(titles);
+    console.log(tt);
+    $(".titles").html("");
+    tt.forEach(function(value,idx){    //value在前,key在後
+      console.log(value);
+      let str=`<a href='javascript:getNews(${value.id})' style='display:block'>${value.title}</a>`;
+      $(".titles").append(str);  //append->在內容最後加入,原本的內容不會被覆蓋  prepend->在內容最前面加入 before->在標籤前面加入 after->在標籤後面加入
+    })
+
+    // $(".titles").html(tt[0].title);
   })
 }
 
