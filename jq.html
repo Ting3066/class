@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <script src="plugins/jquery-3.5.1.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+    
+  .bigfont{
+    font-size: 5rem;
+  }
+  </style>
+</head>
+<body>
+  <h1>hello <span>w</span>orld</h1>
+  <p class="txt">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae, cupiditate!</p>
+  <script>
+    console.log($("h1"));
+    console.log(jQuery("h1"));  //若發生$符號無法使用的狀況時，也可以直接使用jQuery
+
+    // $("h1").addClass("a");  //在h1標籤新增class a
+    // $("h1").css('color','red')  //直接針對style內容修改，第一個參數為屬性，第二個為屬性值
+    // $("h1").addClass('bigfont').css('color','red'); //以上兩行可以寫成這一行
+
+
+    $("h1>span").css("color","black"); //對h1下的span執行
+  </script>
+</body>
+</html>

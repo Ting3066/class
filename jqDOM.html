@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+  .hot{
+    color:red;
+  }
+  .big{
+    font-size: 3rem;
+  }
+  </style>
+</head>
+<body>
+  <script>
+    // onload=function(){
+      // }
+    // $(document).ready(function(){  //DOM 生成完畢後
+    //   console.log($("#head"));
+    // });
+  </script>
+  <div class="container">
+
+    <h1 id="head" title="mytitle">My jQuery Demo List</h1>
+    <div id="page">
+      <h1>我的<span>清單</span></h1>
+      <ul>
+        <li id="one" class="hot">吃<b>飯飯</b></li>
+        <li id="two" class="hot">練程式</li>
+        <li id="three" class="hot">打遊戲</li>
+        <li id="four">睡覺</li>
+      </ul>
+      <div>
+        <h2>Lorem ipsum dolor sit amet.</h2>
+      </div>
+    </div>
+    <div title="mydiv">
+      <h2>Lorem ipsum dolor sit amet.</h2>
+    </div>
+    <h2>Lorem ipsum dolor sit amet.</h2>
+  </div>
+  <hr>
+  <input type="text" name="text" value="txt">
+  <input type="button" value="btn">
+
+  <button>click</button>
+  <button>click</button>
+  <script>
+    document.getElementsByTagName("button")[0].onclick=function(){
+      console.log("JS");
+    };
+    $("button").eq(1).on("click",function(){
+      console.log("JQ");
+    });
+    
+    $("button").on("click",function(){
+      console.log("JQ ALL");
+    });
+    $("button").click(function(){
+      console.log("JQ Quick");
+    });
+
+    $("button").eq(1).on("mouseover",function(){
+      console.log("JQ Hover");
+    });
+
+    $("button").hover(function(){
+      console.log("JQ Quick Hover");
+    });
+  </script>
+  
+
+
+
+
+
+  <script>
+    // $(".hot").css("color","red")
+
+    // $("li:not(.hot)").css("color","red")
+    // $("li").not(".hot").css("color","red") 兩句是一樣的意思
+
+    // $("li:eq(2)") 選擇第幾個，起始為0，等同css 的nth-child
+
+    // $("li:contains('打')") 尋找內容有打的
+
+    // $("div:has(h1)") 找持有h1的div,對象是父級不是找子級
+
+    //$("input[type!=text]") 尋找input且type不為text的
+    // $(":text") 尋找type為text的input表單 快速寫法
+
+
+    // $("div[title=mydiv]").html("<p>213</p>")  替換div內容
+    // $("div[title=mydiv]").replaceWith("<h5>213</h5>") 將整個div換掉
+
+    // $("#two").before("<li>刷牙</li>") 在#two前面插入<li>刷牙</li>
+    // $("#two").after("<li>看書</li>") 在#two後面插入<li>看書</li>
+
+    // $("ul").append("<li>1</li>") 在最後面插入
+    // $("ul").prepend("<li>0</li>") 在最前面插入
+
+    // $("#three").clone() 複製
+    // $("#four").remove() 刪除
+    // $("#four").detach() 刪除
+
+    // $("ul").empty() 清掉子代元素
+
+
+    // $("#head").attr("title") 取得title的值 
+    // $("#head").attr("title","yourtitle") 將title改為yourtitle
+    // $("#head").removeAttr("title") 移除title
+
+
+    // $("#head").attr("class","big hot") 在#head新增class big hot
+
+    // $("#head").toggleClass("hot") 像開關一樣的效果，執行一次會新增，執行第二次會刪除
+
+    // $(".container").children()
+    // $(".container").parent() 尋找父級
+    // $(".container").parents() 尋找父級以上的
+    // $(".container *") 尋找所有子級
+
+    
+    // $(".container").find() 
+
+    // $("#two").prev() 前一個元素
+    // $("#two").next() 下一個元素
+    // $("#two").siblings() 所有兄弟
+
+
+  </script>
+</body>
+</html>
