@@ -2,10 +2,12 @@
 date_default_timezone_set("Asia/Taipei");
 session_start();
 
+$Poster=new DB("poster");
+
 
 class DB{
   protected $table;
-  protected $dsn="mysql:host=localhost;dbname=db02;charset=utf8";
+  protected $dsn="mysql:host=localhost;dbname=db03;charset=utf8";
   protected $pdo;
 
   function __construct($table){
@@ -107,14 +109,14 @@ class DB{
   }
 
 
-  function to($url){
-    header("location:".$url);
-  }
-
-
-
+  
+  
+  
 }
 
+function to($url){
+  header("location:$url");
+}
 
 
 
