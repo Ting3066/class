@@ -47,6 +47,6 @@
 </table>
 <div class="ct">
   <input type="submit" value="新增">
-  <input type="reset" value="清除">
+  <input type="reset" value="重置">
 </div>
 </form>
