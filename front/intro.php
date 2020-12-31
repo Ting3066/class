@@ -7,10 +7,10 @@ $movie=$Movie->find($_GET['id']);
     <font style="font-size:24px"> <img src="img/<?=$movie['poster'];?>" width="200px" height="250px"
         style="margin:10px; float:left">
       <p style="margin:3px">影片名稱 ：<?=$movie['name'];?>
-        <input type="button" value="線上訂票" onclick="javascript:location.href='index.php?do=order&id-<?=$movie['id'];?>'"
+        <input type="button" value="線上訂票" onclick="javascript:location.href='index.php?do=order&id=<?=$movie['id'];?>'"
           style="margin-left:50px; padding:2px 4px" class="b2_btu">
       </p>
-      <p style="margin:3px">影片分級 ： <img src="icon/<?=$movie['level'];?>"
+      <p style="margin:3px">影片分級 ： <img src="icon/<?=$movie['level'];?>.png"
           style="display:inline-block;"><?=$movie['level'];?> </p>
       <p style="margin:3px">影片片長 ： <?=$movie['length'];?>分鐘</p>
       <p style="margin:3px">上映日期 <?=$movie['year']."/".$movie['month']."/".$movie['day'];?></p>
