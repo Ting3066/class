@@ -107,6 +107,12 @@ function getCombo(item){  //只有在紅色狀態下得分
     
     count++;
     combo.textContent=count;
+
+    setTimeout(() => {  //綠色1秒後會自動轉回黃色
+      animal[where].src="yellow.png";
+      animal[where].style.backgroundColor=null;
+      animal[where].alt=null;
+    }, 1000);
   }
 }
 
