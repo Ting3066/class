@@ -1,0 +1,33 @@
+body{
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.container{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+  height: 600px;
+}
+
+.content{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 500px;
+  height: 500px;
+  padding: 10px;
+  background: gray;
+}
+
+.content>img{
+  flex: 0 0 32%;
+  background: yellow;
+  cursor: pointer;
+}
