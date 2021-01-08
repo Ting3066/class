@@ -14,6 +14,7 @@ if(!empty($_FILES['poster']['tmp_name'])){
 
 // $_POST['sh']=1;
 // $_POST['rank']=$Movie->q("select max(rank) from movie")[0][0]+1;
+$_POST['ondate']=$_POST['year']."-".$_POST['month']."-".$_POST['day'];
 
 foreach($movie as $key => $value){
   if(isset($_POST[$key])){

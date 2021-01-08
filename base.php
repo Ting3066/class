@@ -57,7 +57,7 @@ class DB{
         foreach($arg[0] as $key => $value){
           $tmp[]=sprintf("`%s`='%s'",$key,$value);
         }
-        $sql=$sql.$sql.=" where ".implode(" && ",$tmp);
+        $sql=$sql.=" where ".implode(" && ",$tmp);
       }else{
         $sql.=$arg[0];
       }
@@ -65,6 +65,7 @@ class DB{
     if(isset($arg[1])){
       $sql.=$arg[1];
     }
+    // echo $sql;
     return $this->pdo->query($sql)->fetchColumn();
   }
 
