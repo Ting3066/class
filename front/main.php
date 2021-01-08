@@ -126,14 +126,16 @@
       $("#p0").show();
       let t=setInterval('ani()', 2500);
       
-      function ani(){
+      function ani(next){
         let now=$(".po:visible");
         let ani=$(now).data('ani');
-        let next;
-        if($(now).next().length){
-          next=$(now).next();
-        }else{
-          next=$("#p0");
+        if(next==undefined){
+
+          if($(now).next().length){
+            next=$(now).next();
+          }else{
+            next=$("#p0");
+          }
         }
         switch(ani){
           case 1:
@@ -156,6 +158,23 @@
         }
       }
     
+      $(".btn").on("click",function(){
+        let id=$(this).attr('id').replace("b","p");
+        // $(".po").hide();
+
+        ani($("#"+id));
+        console.log(id)
+      })
+
+      $(".list").hover(
+        function(){
+          clearInterval(t)
+        },
+        function(){
+          t=setInterval('ani()',2500);
+        }
+      )
+      
     </script>
     
     <div class="half">
