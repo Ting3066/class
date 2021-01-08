@@ -42,6 +42,7 @@
   height: 100px;
   text-align: center;
   flex-shrink: 0;
+  position: relative;
 }
 
 .btn img{
@@ -112,10 +113,13 @@
             p--;
           }
         }
-        $(".btn").hide();
-        for(i=p;i<p+4;i++){
-          $('#b'+i).show();
-        }
+
+        $(".btn").animate({right:p*80})
+        
+        // $(".btn").hide();
+        // for(i=p;i<p+4;i++){
+        //   $('#b'+i).show();
+        // }
       })
     
       $(".po").hide();
