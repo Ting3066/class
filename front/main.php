@@ -97,9 +97,29 @@
       </div>
     </div>
     <script>
+      let p=0;
+      let pos=$(".po").length;
+      
+      $(".arrow").on("click",function(){
+        if($(this).hasClass('right')){
+          //點右邊
+          if((p+1)<=(pos-4)){
+            p++;
+          }
+        }else{
+          //點左邊
+          if((p-1)>=0){
+            p--;
+          }
+        }
+        $(".btn").hide();
+        for(i=p;i<p+4;i++){
+          $('#b'+i).show();
+        }
+      })
+    
       $(".po").hide();
       $("#p0").show();
-      let pos=$(".po").length;
       let t=setInterval('ani()', 2500);
       
       function ani(){
