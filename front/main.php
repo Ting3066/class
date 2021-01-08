@@ -13,10 +13,13 @@
   margin: auto;
   text-align: center;
   position: relative;
+  overflow: hidden;
 }
 
 .posters>div{
   position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .posters img{
@@ -155,6 +158,26 @@
             $(now).hide(1000);
             $(next).show(1000);
           break;
+          case 4:
+            //滑入滑出,補充美化樣式
+            $(now).animate({left:-200},1000,function(){
+              $(this).hide();
+              $(this).css({left:0})
+            });
+            $(next).css({left:200})
+            $(next).show();
+            $(next).animate({left:0},1000);
+          break;
+          case 5:
+            //縮放,補充美化樣式
+            $(next).css({width:0,height:0,top:130,left:100});
+            $(now).animate({width:0,height:0,top:130,left:100},1000,function(){
+              $(this).hide();
+              $(this).css({width:200,height:260,top:0,left:0})
+              $(next).show();
+              $(next).animate({width:200,height:260,left:0,top:0})
+            });
+          break;
         }
       }
     
@@ -163,7 +186,7 @@
         // $(".po").hide();
 
         ani($("#"+id));
-        console.log(id)
+        // console.log(id)
       })
 
       $(".list").hover(
