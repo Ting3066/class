@@ -23,13 +23,13 @@ if($date==date("Y-m-d")){
   
   for($i=$start;$i<=5;$i++){
   
-    echo "<option value='{$sess[$i]}'>{$sess[$i]} 剩餘座位 20 </option>";
+    echo "<option value='$i'>{$sess[$i]} 剩餘座位 20 </option>";
   
   }
 }else{
   for($i=1;$i<=5;$i++){
   
-    echo "<option value='{$sess[$i]}'>{$sess[$i]} 剩餘座位 20 </option>";
+    echo "<option value='$i'>{$sess[$i]} 剩餘座位 20 </option>";
   
   }
 

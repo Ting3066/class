@@ -1,24 +1,29 @@
 <h4 class="ct">線上訂票</h4>
-<form>
-  <table style="width:400px;margin:auto">
-    <tr>
-      <td width="15%">電影:</td>
-      <td><select name="movie" id="movie" style="width:98%" onchange="getDays()"></select></td>
-    </tr>
-    <tr>
-      <td>日期:</td>
-      <td><select name="date" id="date" style="width:98%" onchange="getSessions()"></select></td>
-    </tr>
-    <tr>
-      <td>場次:</td>
-      <td><select name="session" id="session" style="width:98%"></select></td>
-    </tr>
-  </table>
-  <div class="ct">
-    <input type="button" value="確定">
-    <input type="reset" value="重置">
-  </div>
-</form>
+<div class="order">
+  <form>
+    <table style="width:400px;margin:auto">
+      <tr>
+        <td width="15%">電影:</td>
+        <td><select name="movie" id="movie" style="width:98%" onchange="getDays()"></select></td>
+      </tr>
+      <tr>
+        <td>日期:</td>
+        <td><select name="date" id="date" style="width:98%" onchange="getSessions()"></select></td>
+      </tr>
+      <tr>
+        <td>場次:</td>
+        <td><select name="session" id="session" style="width:98%"></select></td>
+      </tr>
+    </table>
+    <div class="ct">
+      <input type="button" value="確定" onclick="booking()">
+      <input type="reset" value="重置">
+    </div>
+  </form>
+</div>
+<div class="booking" style="display:none">
+
+</div>
 
 
 <script>
@@ -65,6 +70,16 @@ function getSessions(){
   let date=$("#date").val();
   $.get("api/get_sessions.php",{movie,date},function(sessions){
     $("#session").html(sessions);
+  })
+}
+
+function booking(){
+  $(".order,.booking").toggle();
+  let movie=$("#movie").val();
+  let date=$("#date").val();
+  let session=$("#session").val();
+  $.get("api/get_booking.php",{movie,date,session},function(booking){
+    $(".booking").html(booking);
   })
 }
 
