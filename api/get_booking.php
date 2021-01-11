@@ -39,10 +39,26 @@ $now=date("G");
   right: 5px;
 }
 
+.booking-block{
+  margin:auto;
+  width:540px;
+  height:370px;
+  background:url('icon/03D04.png') no-repeat;
+  padding-top:20px;
+}
+
+.seat-block{
+  width:315px;
+  height:340px;
+  margin:auto;
+  display:flex;
+  flex-wrap:wrap;
+}
+
 </style>
 
-<div style="margin:auto;width:540px;height:370px;background:url('icon/03D04.png') no-repeat;padding-top:20px">
-  <div style="width:315px;height:340px;margin:auto;display:flex;flex-wrap:wrap">
+<div class="booking-block">
+  <div class="seat-block">
   <?php
   for($i=0;$i<20;$i++){
     echo "<div class='seat empty'>";
@@ -60,6 +76,45 @@ $now=date("G");
   <p>您已經勾選<span id="ticket"></span>張票，最多可以購買四張票</p>
   <div class="ct">
     <button onclick="javascript:$('.order,.booking').toggle()">上一步</button>
-    <button>訂購</button>
+    <button onclick="finish()">訂購</button>
   </div>
 </div>
+
+<script>
+//建立座位陣列
+let seats=new Array();
+
+//當chekcbox被點選時進行檢查
+$(".chk").on("click",function(){
+
+  //判斷checkbox的狀況來決定要新增還是刪除座位
+  if($(this).prop('checked')){
+    seats.push($(this).val());
+    
+    //計算目前票數
+    if(seats.length>4){
+      alert("最多只能購買四張票");
+      seats.splice(seats.indexOf($(this).val()),1);
+      $(this).prop('checked',false);
+    }
+    $("#ticket").text(seats.length);
+  }else{
+
+    //取消選取座位
+    seats.splice(seats.indexOf($(this).val()),1);
+    $("#ticket").text(seats.length);
+  }
+  
+  console.log(seats);
+})
+
+function finish(){
+  let movie=$("#movie").val();
+  let date=$("#date").val();
+  let session=$("#session").val();
+
+  $.post("api/finish_order.php",{seats,movie,date,session},function(num){
+    location.href="index.php?do=finish&num="+num;
+  })
+}
+</script>
