@@ -11,6 +11,7 @@ let btn=document.getElementsByTagName("button")[0];  //button
 btn.addEventListener('click',gameStart);
 
 document.onkeydown=keyboard;
+let redBeYellow=new Array();
 
 
 function gameStart(){
@@ -57,7 +58,7 @@ function showIt(where,delay,item){ //觸發紅色狀態
     animal[where].style.backgroundColor="red";
     animal[where].alt=item;
 
-    setTimeout(() => {
+    redBeYellow[item]=setTimeout(() => {
       animal[where].src="yellow.png";
       animal[where].style.backgroundColor=null;
       animal[where].alt=null;
@@ -66,6 +67,15 @@ function showIt(where,delay,item){ //觸發紅色狀態
     
 }
 
+//滑鼠事件
+for(let i=0;i<animal.length;i++){
+  animal[i].addEventListener("click",()=>{
+    getCombo(i);
+  });
+}
+
+
+//鍵盤事件
 function keyboard(){
   // console.log(event.keyCode);
   switch(event.keyCode){
@@ -101,17 +111,23 @@ function keyboard(){
 }
 
 function getCombo(item){  //只有在紅色狀態下得分
-  if(animal[item].style.backgroundColor=="red"){
+  if(animal[item].style.backgroundColor=="red"){  
     animal[item].src="green.png";
     animal[item].style.backgroundColor="green";
     
     count++;
     combo.textContent=count;
 
+    //取消原本紅轉黃的預定規劃
+    const theID=animal[item].alt;
+    // console.log(theID);
+    clearTimeout(redBeYellow[theID]);
+
+    //規劃綠轉黃的預定規劃
     setTimeout(() => {  //綠色1秒後會自動轉回黃色
-      animal[where].src="yellow.png";
-      animal[where].style.backgroundColor=null;
-      animal[where].alt=null;
+      animal[item].src="yellow.png";
+      animal[item].style.backgroundColor=null;
+      animal[item].alt=null;
     }, 1000);
   }
 }
