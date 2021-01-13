@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+</head>
+<body>
+  <div style="width:100%; padding:2px; height:290px;">
+    <div id="mwww" loop="true" style="width:100%; height:100%;">
+      <div style="width:99%; height:100%; position:relative;" class="cent">沒有資料</div>
+    </div>
+  </div>
+  <script>
+    //使用ajax方法取得json檔的圖片資料，取得後執行todo函式
+    $.getJSON("data.json",function(result){  //一種ajax技術，採用非同步
+      todo(result.q1t5);
+    })
+
+
+    function todo(myjson){  
+
+      if(myjson.length){ //有圖片先跑第0張
+        $("#mwww").html("<embed loop=true src='" + myjson[0] + "' style='width:99%; height:100%;'></embed>")
+      }
+      if(myjson.length>1){  //圖片不只一張時
+        let now=1;
+        setInterval(()=>{  //進行3秒輪播
+          $("#mwww>embed").attr("src",myjson[now])
+          now=(now+1)%myjson.length;
+        },3000)
+      }
+    }
+</script>
+</body>
+</html>
