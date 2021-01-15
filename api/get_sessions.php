@@ -22,14 +22,36 @@ if($now<=13){
 if($date==date("Y-m-d")){
   
   for($i=$start;$i<=5;$i++){
-  
-    echo "<option value='$i'>{$sess[$i]} 剩餘座位 20 </option>";
+    //作法一
+    // $orders=$Order->all(['movie'=>$movie['name'],'date'=>$date,'session'=>$sess[$i]]);
+    
+    // $sum=0;
+    // foreach($orders as $ord){
+      //   $sum+=$ord['qt'];
+      // }
+
+      //作法二
+    $sum=$Order->q("select sum(`qt`) from `orders` where `movie`='{$movie['name']}' && `date`='$date' && `session`='{$sess[$i]}'")[0][0];
+
+
+    echo "<option value='$i'>{$sess[$i]} 剩餘座位 ".(20-$sum)." </option>";
   
   }
 }else{
   for($i=1;$i<=5;$i++){
-  
-    echo "<option value='$i'>{$sess[$i]} 剩餘座位 20 </option>";
+    //作法一
+    // $orders=$Order->all(['movie'=>$movie['name'],'date'=>$date,'session'=>$sess[$i]]);
+    
+    // $sum=0;
+    // foreach($orders as $ord){
+      //   $sum+=$ord['qt'];
+      // }
+
+      //作法二
+    $sum=$Order->q("select sum(`qt`) from `orders` where `movie`='{$movie['name']}' && `date`='$date' && `session`='{$sess[$i]}'")[0][0];
+
+
+    echo "<option value='$i'>{$sess[$i]} 剩餘座位 ".(20-$sum)." </option>";
   
   }
 
