@@ -5,6 +5,6 @@ $acc=$_GET['acc'];
 
 $chk=$Mem->count(['acc'=>$acc]);
 
-return $chk;
+echo $chk;
 
 ?>
