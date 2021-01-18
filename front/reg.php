@@ -42,10 +42,10 @@
     let addr=$("#addr").val();
     let email=$("#email").val();
     
-    $.get('api/reg.php',{acc},function(res){
+    $.get('api/chk_acc.php',{acc},function(res){  //先檢查帳號是否被使用過
       if(parseInt(res) || acc=='admin'){  //回傳的資料為1或者是admin則顯示已被使用
         alert("帳號已被使用");
-      }else{
+      }else{  //若帳號沒有重複則執行註冊程式
         $.post('api/reg.php',{name,acc,pw,tel,addr,email},function(res){
           location.href='index.php?do=login';
         })
