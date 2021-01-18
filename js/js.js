@@ -10,16 +10,16 @@ function login(table){
 	let pw=$("#pw").val();
 	let ans=$("#ans").val();
 
-	$.get('api/ans.php',{ans},function(res){
+	$.get('api/ans.php',{ans},function(res){  //先判斷驗證碼答案是否正確
 		if(parseInt(res)){
-			$.get('api/login.php',{table,acc,pw},function(result){
+			$.get('api/login.php',{table,acc,pw},function(result){  //再判斷帳號是否正確
 				if(parseInt(result)){
 					switch(table){
 						case 'mem':
-							location.href='index.php';
+							location.href='index.php';  //若是會員則導向前台首頁
 							break;
 							case 'admin':
-							location.href='backend.php';
+							location.href='backend.php';  //若是管理者則導向後台頁面
 						break;
 					}
 				}else{
