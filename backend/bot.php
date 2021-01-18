@@ -7,7 +7,7 @@ if(!empty($_POST['bottom'])){
 }
 ?>
 <h2 class="ct">編輯頁尾版權區</h2>
-<form action="?do=bot" method="post">
+<form action="?do=bot" method="post">  <!--將值傳送至本頁-->
   <table class="all">
     <tr>
       <td class="tt">頁尾宣告內容</td>
@@ -16,6 +16,6 @@ if(!empty($_POST['bottom'])){
   </table>
   <div class="ct">
     <input type="submit" value="編輯">
-    <input type="button" value="重置" onclick="javascript:$('#bot').val('')">
+    <input type="button" value="重置" onclick="javascript:$('#bot').val('')">  <!--使用jq將欄位內容清空-->
 </div>
 </form>
