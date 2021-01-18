@@ -13,7 +13,7 @@
   </tr>
   <tr>
     <td class="ct tt">密碼</td>
-    <td class="pp"><input type="text" name="pw" id="pw"></td>
+    <td class="pp"><input type="password" name="pw" id="pw"></td>
   </tr>
   <tr>
     <td class="ct tt">電話</td>
@@ -29,6 +29,40 @@
   </tr>
 </table>
 <div class="ct">
-  <button onclick="req()">註冊</button>
+  <button onclick="reg()">註冊</button>
   <button onclick="reset()">重置</button>
 </div>
+
+<script>
+  function reg(){
+    let acc=$("#acc").val();
+    let name=$("#name").val();
+    let pw=$("#pw").val();
+    let tel=$("#tel").val();
+    let addr=$("#addr").val();
+    let email=$("#email").val();
+    
+    $.get('api/reg.php',{acc},function(res){
+      if(parseInt(res) || acc=='admin'){  //回傳的資料為1或者是admin則顯示已被使用
+        alert("帳號已被使用");
+      }else{
+        $.post('api/reg.php',{name,acc,pw,tel,addr,email},function(res){
+          location.href='index.php?do=login';
+        })
+
+      }
+    })
+  }
+
+  function chkAcc(){
+    let acc=$("#acc").val();
+    $.get('api/chk_acc.php',{acc},function(res){
+      if(parseInt(res) || acc=='admin'){  //回傳的資料為1或者是admin則顯示已被使用
+        alert("帳號已被使用");
+      }else{
+        alert("帳號可以使用");
+
+      }
+    })
+  }
+</script>

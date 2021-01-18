@@ -4,6 +4,7 @@ session_start();
 
 
 $Bottom=new DB("bottom");
+$Mem=new DB("mem");
 
 
 class DB{
