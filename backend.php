@@ -1,5 +1,13 @@
 <?php
 include_once "base.php";
+
+if(empty($_SESSION['admin'])){
+	to("index.php");
+	exit();
+}else{
+	$admin=$Admin->find(['acc'=>$_SESSION['admin']]);
+	$pr=unserialize($admin['pr']);
+}
 ?>
 <!DOCTYPE html
 	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -27,12 +35,13 @@ include_once "base.php";
 		<div id="left" class="ct">
 			<div style="min-height:400px;">
 				<a href="?do=main">管理權限設置</a>
-				<a href="?do=th">商品分類與管理</a>
-				<a href="?do=order">訂單管理</a>
-				<a href="?do=mem">會員管理</a>
-				<a href="?do=bot">頁尾版權管理</a>
-				<a href="?do=main">最新消息管理</a>
-				<a href="?do=logout" style="color:#f00;">登出</a>
+				<?=(in_array(1,$pr))?"<a href='?do=th'>商品分類與管理</a>":"";?>
+				<?=(in_array(2,$pr))?"<a href='?do=order'>訂單管理</a>":"";?>
+				<?=(in_array(3,$pr))?"<a href='?do=mem'>會員管理</a>":"";?>
+				<?=(in_array(4,$pr))?"<a href='?do=bot'>頁尾版權管理</a>":"";?>
+				<?=(in_array(5,$pr))?"<a href='?do=news'>最新消息管理</a>":"";?>
+
+				<a href="javascript:lof('api/logout.php?do=admin')" style="color:#f00;">登出</a>
 			</div>
 		</div>
 		<div id="right">
