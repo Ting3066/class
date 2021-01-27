@@ -1,0 +1,70 @@
+body{
+  background: #333;
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+#clock1{
+  width: 740px;
+  height: 100px;
+  background: black;
+  margin: 20px auto;
+  display: flex;
+
+}
+
+#clock1 div{
+  display: inline-flex;
+  
+}
+
+
+.c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9, .c0{
+  width: 100px;
+  height: 100px;
+  background: url('number.png');
+}
+
+.cc{
+  width: 50px;
+  height: 100px;
+  background: url('number.png');
+  background-position: 50px;
+  margin: 0 10px;
+}
+
+.c0{
+  background-position: 0px;
+}
+.c1{
+  background-position: -100px;
+}
+.c2{
+  background-position: -200px;
+}
+.c3{
+  background-position: -300px;
+}
+.c4{
+  background-position: -400px;
+}
+.c5{
+  background-position: -500px;
+}
+.c6{
+  background-position: 450px;
+}
+.c7{
+  background-position: 350px;
+}
+.c8{
+  background-position: 250px;
+}
+.c9{
+  background-position: 150px;
+}
