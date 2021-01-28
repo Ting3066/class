@@ -3,13 +3,13 @@ $goods=$Goods->find($_GET['id']);
 
 ?>
 
-<h2 class="ct">新增商品</h2>
-<form action="api/add_goods.php" method="post">
+<h2 class="ct">編輯商品</h2>
+<form action="api/edit_goods.php" method="post">
   <table class="all">
     <tr>
       <td class="tt">所屬大分類</td>
       <td class="pp">
-        <select name="big" id="big"></select>
+        <select name="big" id="big" onchange="getMids()"></select>
       </td>
     </tr>
     <tr>
