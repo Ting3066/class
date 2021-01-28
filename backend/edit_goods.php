@@ -57,19 +57,24 @@ $goods=$Goods->find($_GET['id']);
 
 <script>
 getBigs();
+let first=true;
 function getBigs(){
     $.get("api/get_big.php",function(bigs){
       $("#big").html(bigs);
-      $("#big option[value='<?=$goods['big'];?>']").prop('selected',true);
+        $("#big option[value='<?=$goods['big'];?>']").prop('selected',true);
       getMids();
     })
   }
+  
+  function getMids(){
+    $.get("api/get_mid.php",{bigId:$("#big").val()},function(mids){
+      $("#mid").html(mids);
+      if(first){
+        $("#mid option[value='<?=$goods['mid'];?>']").prop('selected',true);
 
-function getMids(){
-  $.get("api/get_mid.php",{bigId:$("#big").val()},function(mids){
-    $("#mid").html(mids);
-    $("#mid option[value='<?=$goods['mid'];?>']").prop('selected',true);
-  })
+      }
+      first=false;
+    })
 }
 
 </script>
