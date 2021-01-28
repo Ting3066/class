@@ -60,7 +60,7 @@ getBigs();
 function getBigs(){
     $.get("api/get_big.php",function(bigs){
       $("#big").html(bigs);
-      $("#big option[value='<?=$goods['big'];?>'").prop('selected',true);
+      $("#big option[value='<?=$goods['big'];?>']").prop('selected',true);
       getMids();
     })
   }
@@ -68,7 +68,7 @@ function getBigs(){
 function getMids(){
   $.get("api/get_mid.php",{bigId:$("#big").val()},function(mids){
     $("#mid").html(mids);
-    $("#big option[value='<?=$goods['mid'];?>'").prop('selected',true);
+    $("#mid option[value='<?=$goods['mid'];?>']").prop('selected',true);
   })
 }
 
