@@ -5,10 +5,17 @@ if(isset($_GET['goods'])){
 
 if(empty($_SESSION['mem'])){
   to("index.php?do=login");
+  exit();
 }
 
 ?>
 <h2 class="ct"><?=$_SESSION['mem'];?>的購物車</h2>
+<?php
+if(empty($_SESSION['cart'])){
+  echo "購物車是空的，請前往商場選購商品";
+  exit();
+}
+?>
 <table class="all">
   <tr class="tt ct">
     <td>編號</td>
