@@ -6,10 +6,10 @@ if(!empty($_FILES['img']['tmp_name'])){
   $_POST['img']=$_FILES['img']['name'];
 }
 
+
 $_POST['num']=rand(100000,999999);
-
-
-$Type->save($_POST);
+$_POST['sh']=1;
+$Goods->save($_POST);
 
 to("../backend.php?do=th");
 ?>

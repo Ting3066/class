@@ -15,7 +15,7 @@
     </tr>
     <tr>
       <td class="tt">商品編號</td>
-      <td class="pp"><input type="text" name="num"></td>
+      <td class="pp">完成分類後自動分配</td>
     </tr>
     <tr>
       <td class="tt">商品名稱</td>
@@ -60,7 +60,6 @@ function getBigs(){
 
 function getMids(){
   $.get("api/get_mid.php",{bigId:$("#big").val()},function(mids){
-    console.log($("#big").val())
     $("#mid").html(mids);
     
   })
