@@ -45,7 +45,7 @@ if(empty($_SESSION['cart'])){
 </table>
 <div class="tc">
   <a href="index.php"><img src="icon/0411.jpg"></a>
-  <a href="?do=checkout.php"><img src="icon/0412.jpg"></a>
+  <a href="?do=checkout"><img src="icon/0412.jpg"></a>
 </div>
 
 <script>
