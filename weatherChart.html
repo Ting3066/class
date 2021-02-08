@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+</head>
+
+<body>
+  
+</body>
+<canvas id="myChart" width="1200" height="400"></canvas>
+
+<script>
+  const ctx = document.getElementById('myChart').getContext('2d');
+
+  let kl, tp, nt, tu;
+  let timeLine=new Array();
+  let tpAryT=new Array(),
+      klAryT=new Array(),
+      ntAryT=new Array(),
+      tuAryT=new Array();
+
+      
+  $.getJSON('https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/F-D0047-091?Authorization=CWB-0427E86C-6036-420C-B4DB-251E78D1E025&downloadType=WEB&format=JSON')
+  .done(function(re){
+    data=re;
+    kl=re.cwbopendata.dataset.locations.location[13];
+    tp=re.cwbopendata.dataset.locations.location[16];
+    nt=re.cwbopendata.dataset.locations.location[18];
+    tu=re.cwbopendata.dataset.locations.location[21];
+
+    // for(const item of tp.weatherElement[0].time){
+    //   timeLine.push(item.startTime.substring(5,13));
+    // }
+
+    for(let i=0;i<tp.weatherElement[0].time.length;i++){
+      timeLine[i]=(tp.weatherElement[0].time[i].startTime).substring(5,13);
+
+      tpAryT.push(tp.weatherElement[0].time[i].elementValue.value);
+      klAryT.push(kl.weatherElement[0].time[i].elementValue.value);
+      ntAryT.push(nt.weatherElement[0].time[i].elementValue.value);
+      tuAryT.push(tu.weatherElement[0].time[i].elementValue.value);
+    }
+    
+
+    //計算上下限
+    const findMax=Math.max(Math.max(...tpAryT),Math.max(...ntAryT),Math.max(...klAryT),Math.max(...tuAryT));
+    const findMin=Math.min(Math.min(...tpAryT),Math.min(...ntAryT),Math.min(...klAryT),Math.min(...tuAryT));
+    
+
+    new Chart(ctx,{
+      type: 'line',  //圖表類型
+      data: {  //圖表資料
+        labels: timeLine,  //X軸欄位名稱
+        datasets: [{  //Y軸資料細節
+          label: tp.locationName,  //該資料組的標題
+          data: tpAryT,  //tp value*14
+          backgroundColor:'rgba(255, 99, 132, 0)',
+          borderColor:'rgba(255, 99, 132, 1)',
+          borderWidth: 3  //每組圖形邊框的粗度
+        },{
+          label: nt.locationName,  //該資料組的標題
+          data: ntAryT,  //nt value*14
+          backgroundColor:'rgba(54, 162, 235, 0)',
+          borderColor:'rgba(54, 162, 235, 1)',
+          borderWidth: 3  //每組圖形邊框的粗度
+        },{
+          label: kl.locationName,  //該資料組的標題
+          data: klAryT,  //kl value*14
+          backgroundColor:'rgba(255, 206, 86, 0)',
+          borderColor:'rgba(255, 206, 86, 1)',
+          borderWidth: 3  //每組圖形邊框的粗度
+        },{
+          label: tu.locationName,  //該資料組的標題
+          data: tuAryT,  //tu value*14
+          backgroundColor:'rgba(75, 192, 192, 0)',
+          borderColor:'rgba(75, 192, 192, 1)',
+          borderWidth: 3  //每組圖形邊框的粗度
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              // beginAtZero: true  //起始值為0，若沒有加這行，則會以最低數值為起始點
+              stepSize:0.5,
+              max:findMax+2,
+              min:findMin-2
+            }
+          }]
+        }
+      }
+    });
+  })
+  .fail(function(){
+    console.log("api connected fail");
+  });
+</script>
+</html>

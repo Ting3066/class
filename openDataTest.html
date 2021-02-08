@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let data1, data2;
+
+    //寫法一
+    // $.ajax({
+    //   url:'https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/F-C0032-001?Authorization=CWB-0427E86C-6036-420C-B4DB-251E78D1E025&downloadType=WEB&format=JSON',
+    //   method:'GET',
+    //   dataType:'json',
+    //   success:(re)=>{
+    //     data=re.cwbopendata.dataset.location;
+    //     console.log(data);
+    //   },
+    //   error:function(){ //連線失敗時
+    //     console.log("api fail");
+    //   }
+    // })
+
+    //寫法二
+    // $.getJSON('https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/F-C0032-001?Authorization=CWB-0427E86C-6036-420C-B4DB-251E78D1E025&downloadType=WEB&format=JSON')
+    // .done(function(re){
+    //   console.log(re);
+    // })
+    // .fail(function(err){
+    //   console.log("fail"+JSON.stringify(err));
+    // });
+    
+    //寫法三
+    // $.get('https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/F-C0032-001?Authorization=CWB-0427E86C-6036-420C-B4DB-251E78D1E025&downloadType=WEB',function(re){
+    //   console.log(re);
+    // });
+
+
+    
+
+    $.when(
+      $.get('https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/F-C0032-001?Authorization=CWB-0427E86C-6036-420C-B4DB-251E78D1E025&downloadType=WEB&format=JSON',(re)=>{
+      data1=re;
+    }),
+    $.get('https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/F-C0032-001?Authorization=CWB-0427E86C-6036-420C-B4DB-251E78D1E025&downloadType=WEB&format=JSON',(re)=>{
+      data2=re;
+    })
+    ).then(()=>{
+      console.log(data1, data2);
+    });
+    
+  </script>
+</body>
+</html>

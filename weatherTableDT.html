@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
+</head>
+<style>
+  table{
+    border: 1px solid;
+
+  }
+  table{
+    width:100%;
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  img{
+    width:1.5rem;
+    border: none;
+  }
+  hr{
+    width: 8rem;
+    border-color: #bbb !important;
+  }
+</style>
+<body>
+<h1>36小時天氣預報</h1>
+<table id="dt" class="hover display compact">
+  <thead>
+    <tr>
+      <th>編號</th>
+      <th>城市</th>
+      <th>2021/01/25白天</th>
+      <th>2021/01/25晚上</th>
+      <th>2021/01/26凌晨</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+</table>
+
+<script>
+  $.getJSON('https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/F-C0032-001?Authorization=CWB-0427E86C-6036-420C-B4DB-251E78D1E025&downloadType=WEB&format=JSON')
+  .done(function(re){
+    let data, image1, image2, image3;
+    data=re.cwbopendata.dataset.location;
+
+    //標題時間
+    const hourTxt=new Array();
+    hourTxt[0]="凌晨";
+    hourTxt[6]="白天";
+    hourTxt[12]="下午";
+    hourTxt[18]="晚上";
+    // console.log(hourTxt)
+
+    const
+      date1=new Date(data[0].weatherElement[0].time[0].startTime),
+      date2=new Date(data[0].weatherElement[0].time[1].startTime),
+      date3=new Date(data[0].weatherElement[0].time[2].startTime);
+    
+      // console.log(date1.getHours(), date2.getHours(), date3.getHours());
+
+      $("#dt>thead").find("th").eq(2).text(`${date1.getFullYear()}/${date1.getMonth()+1}/${date1.getDate()} ${hourTxt[date1.getHours()]}`);
+      $("#dt>thead").find("th").eq(3).text(`${date2.getFullYear()}/${date2.getMonth()+1}/${date2.getDate()} ${hourTxt[date2.getHours()]}`);
+      $("#dt>thead").find("th").eq(4).text(`${date3.getFullYear()}/${date3.getMonth()+1}/${date3.getDate()} ${hourTxt[date3.getHours()]}`);
+
+      
+      if((date1.getHours()==0) || (date1.getHours()==18)){
+        image1="night";
+      }else{
+        image1="day";
+
+      }
+      if((date2.getHours()==0) || (date2.getHours()==18)){
+        image2="night";
+      }else{
+        image2="day";
+
+      }
+      if((date3.getHours()==0) || (date3.getHours()==18)){
+        image3="night";
+      }else{
+        image3="day";
+
+      }
+
+
+    //22縣市
+    for(let i=0;i<data.length;i++){
+      const row=data[i];
+      // console.log(row);
+
+      code=`
+      <tr>
+        <td>${i+1}</td>
+        <td>${row.locationName}</td>
+        <td>${row.weatherElement[0].time[0].parameter.parameterName}  <img src="img/${image1}/${row.weatherElement[0].time[0].parameter.parameterValue}.svg"><hr> 溫度 ${row.weatherElement[2].time[0].parameter.parameterName}~ ${row.weatherElement[1].time[0].parameter.parameterName}℃</td>
+        <td>${row.weatherElement[0].time[1].parameter.parameterName}  <img src="img/${image2}/${row.weatherElement[0].time[1].parameter.parameterValue}.svg"><hr> 溫度 ${row.weatherElement[2].time[1].parameter.parameterName}~ ${row.weatherElement[1].time[1].parameter.parameterName}℃</td>
+        <td>${row.weatherElement[0].time[2].parameter.parameterName}  <img src="img/${image3}/${row.weatherElement[0].time[2].parameter.parameterValue}.svg"><hr> 溫度 ${row.weatherElement[2].time[2].parameter.parameterName}~ ${row.weatherElement[1].time[2].parameter.parameterName}℃</td>
+      </tr>
+      `;
+
+      $("tbody").append(code);
+    }
+
+
+    $(document).ready( function () {
+      $('#dt').DataTable();
+    } );
+      
+  })
+</script>
+</body>
+</html>
